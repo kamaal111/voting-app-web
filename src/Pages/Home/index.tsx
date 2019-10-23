@@ -1,11 +1,7 @@
 import React from 'react';
 
-const Home = () => {
-  return (
-    <>
-      <p>Hallo</p>
-    </>
-  );
+const Home: React.ElementType = (): JSX.Element => {
+  return <p>Hallo</p>;
 };
 
 export default Home;
