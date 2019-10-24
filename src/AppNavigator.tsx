@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router';
 
 import Home from './Pages/Home';
+import Session from './Pages/Session';
 import NotFound from './Pages/NotFound';
 
 interface RouteType {
@@ -9,24 +10,22 @@ interface RouteType {
   component: React.ElementType;
 }
 
-const routes: RouteType[] = [{ path: '/', component: Home }];
-
-const Routes: React.ElementType = (route: RouteType): JSX.Element => {
-  return (
-    <Route
-      exact
-      path={route.path}
-      render={props => <route.component {...props} />}
-    />
-  );
-};
+const routes: RouteType[] = [
+  { path: '/', component: Home },
+  { path: '/:id', component: Session },
+];
 
 const AppNavigator: React.FC = (): JSX.Element => {
   return (
     <>
       <Switch>
         {routes.map((route: RouteType, i: number) => (
-          <Routes key={i} {...route} />
+          <Route
+            key={i}
+            exact
+            path={route.path}
+            render={props => <route.component {...props} />}
+          />
         ))}
       </Switch>
       <Route exact path={'/:id/*'} render={props => <NotFound {...props} />} />

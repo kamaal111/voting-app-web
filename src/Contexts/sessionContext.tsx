@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useState } from 'react';
 
 export const SessionContext = createContext({});
 
@@ -13,5 +13,3 @@ export const SessionProvider: React.ElementType = ({
     </SessionContext.Provider>
   );
 };
-
-export const useSessionContext = useContext(SessionContext);
