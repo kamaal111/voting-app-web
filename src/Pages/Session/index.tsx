@@ -35,9 +35,20 @@ const Session: React.ElementType = ({ match }): JSX.Element => {
   ) : (
     <>
       <h1>{sessionData.name}</h1>
-      {sessionData.candidates.map(({ name }, index) => (
-        <p key={index}> {name}</p>
-      ))}
+      <button>Submit</button>
+      <div onChange={event => console.log(event.target)}>
+        {sessionData.candidates.map(({ name }, index) => (
+          <div key={index}>
+            <input
+              type="radio"
+              name="candidate"
+              id={`${name}`}
+              value={`${name}`}
+            />
+            {name}
+          </div>
+        ))}
+      </div>
     </>
   );
 };
